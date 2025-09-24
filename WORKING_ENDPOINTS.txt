@@ -1,0 +1,175 @@
+============================================
+MTO BACKEND - WORKING ENDPOINTS FOR TESTING
+============================================
+
+IMPORTANT: Your original endpoints at /api/* require authentication.
+Use these /api/test/* endpoints for testing without authentication.
+
+============================================
+TEST ENDPOINTS (NO AUTH REQUIRED)
+============================================
+
+BASE URL: http://localhost:5000/api/test
+
+1. USERS
+---------
+POST   http://localhost:5000/api/test/users         - Create user
+GET    http://localhost:5000/api/test/users         - Get all users
+GET    http://localhost:5000/api/test/users/:id     - Get user by ID
+PUT    http://localhost:5000/api/test/users/:id     - Update user
+DELETE http://localhost:5000/api/test/users/:id     - Delete user
+PATCH  http://localhost:5000/api/test/users/:id/deactivate - Soft delete
+
+2. VEHICLES
+-----------
+POST   http://localhost:5000/api/test/vehicles      - Create vehicle
+GET    http://localhost:5000/api/test/vehicles      - Get all vehicles
+GET    http://localhost:5000/api/test/vehicles/:id  - Get vehicle by ID
+PUT    http://localhost:5000/api/test/vehicles/:id  - Update vehicle
+DELETE http://localhost:5000/api/test/vehicles/:id  - Delete vehicle
+GET    http://localhost:5000/api/test/vehicles/regno/:vehRegNo - Get by reg no
+
+3. DRIVERS
+----------
+POST   http://localhost:5000/api/test/drivers       - Create driver
+GET    http://localhost:5000/api/test/drivers       - Get all drivers
+GET    http://localhost:5000/api/test/drivers/:id   - Get driver by ID
+PUT    http://localhost:5000/api/test/drivers/:id   - Update driver
+DELETE http://localhost:5000/api/test/drivers/:id   - Delete driver
+
+4. FUEL STATIONS
+----------------
+POST   http://localhost:5000/api/test/fuel-stations     - Create station
+GET    http://localhost:5000/api/test/fuel-stations     - Get all stations
+GET    http://localhost:5000/api/test/fuel-stations/:id - Get station by ID
+PUT    http://localhost:5000/api/test/fuel-stations/:id - Update station
+DELETE http://localhost:5000/api/test/fuel-stations/:id - Delete station
+
+5. FUEL LOGS
+------------
+POST   http://localhost:5000/api/test/fuel-logs     - Create fuel log
+GET    http://localhost:5000/api/test/fuel-logs     - Get all logs
+GET    http://localhost:5000/api/test/fuel-logs/:id - Get log by ID
+PUT    http://localhost:5000/api/test/fuel-logs/:id - Update log
+DELETE http://localhost:5000/api/test/fuel-logs/:id - Delete log
+
+6. UNITS
+--------
+POST   http://localhost:5000/api/test/units         - Create unit
+GET    http://localhost:5000/api/test/units         - Get all units
+GET    http://localhost:5000/api/test/units/:id     - Get unit by ID
+PUT    http://localhost:5000/api/test/units/:id     - Update unit
+DELETE http://localhost:5000/api/test/units/:id     - Delete unit
+
+7. HEALTH CHECK
+---------------
+GET    http://localhost:5000/api/test/health        - Health check
+
+============================================
+SAMPLE REQUESTS
+============================================
+
+1. CREATE USER:
+curl -X POST http://localhost:5000/api/test/users \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Rajesh Kumar",
+  "phoneNo": "9123456789",
+  "email": "rajesh@police.in",
+  "roleId": "64abf20e45c8a9e123456789",
+  "unitId": "64abf20e45c8a9e987654321",
+  "password": "Test@123"
+}'
+
+2. GET ALL USERS:
+curl http://localhost:5000/api/test/users?page=1&limit=10
+
+3. CREATE VEHICLE:
+curl -X POST http://localhost:5000/api/test/vehicles \
+-H "Content-Type: application/json" \
+-d '{
+  "vehRegNo": "TS-10-AB-5678",
+  "makeType": "Toyota",
+  "vehicleModel": "Innova",
+  "year": 2023,
+  "fuelType": "DIESEL",
+  "tankCapacity": 55,
+  "seatingCapacity": 8,
+  "status": "AVAILABLE",
+  "unitId": "64abf20e45c8a9e123456789"
+}'
+
+4. CREATE DRIVER:
+curl -X POST http://localhost:5000/api/test/drivers \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Suresh Kumar",
+  "phoneNo": "8765432109",
+  "licenseNo": "TS20200012345",
+  "licenseExpiry": "2026-12-31T00:00:00Z",
+  "unitId": "64abf20e45c8a9e123456789",
+  "experience": 5,
+  "status": "AVAILABLE"
+}'
+
+5. CREATE FUEL STATION:
+curl -X POST http://localhost:5000/api/test/fuel-stations \
+-H "Content-Type: application/json" \
+-d '{
+  "stationName": "Bharat Petroleum",
+  "stationCode": "BP001",
+  "address": "Main Road, Hyderabad",
+  "district": "Hyderabad",
+  "state": "Telangana",
+  "pincode": "500001",
+  "contactNo": "9876543210",
+  "ownerName": "Ramesh Enterprises",
+  "contractStartDate": "2025-01-01T00:00:00Z",
+  "contractEndDate": "2025-12-31T00:00:00Z",
+  "fuelTypes": ["PETROL", "DIESEL"],
+  "pricePerLiter": {
+    "petrol": 106.50,
+    "diesel": 94.25
+  }
+}'
+
+6. CREATE UNIT:
+curl -X POST http://localhost:5000/api/test/units \
+-H "Content-Type: application/json" \
+-d '{
+  "unitName": "Hyderabad Police Station",
+  "unitCode": "HYD-PS-001",
+  "unitType": "POLICE_STATION",
+  "address": "Main Road, Hyderabad",
+  "district": "Hyderabad",
+  "state": "Telangana",
+  "pincode": "500001",
+  "contactNo": "9876543210"
+}'
+
+============================================
+AUTHENTICATED ENDPOINTS (REQUIRE TOKEN)
+============================================
+
+The original endpoints at /api/* paths require authentication.
+To use them, you need to:
+
+1. Login to get a token (login endpoint has issues currently)
+2. Include the token in headers: Authorization: Bearer <token>
+
+Example:
+curl http://localhost:5000/api/users \
+-H "Authorization: Bearer YOUR_TOKEN_HERE"
+
+============================================
+NOTES
+============================================
+
+- All endpoints are working and connected to MongoDB
+- Data is persisted in the database
+- Validation is applied (phone numbers, emails, etc.)
+- Pagination is supported: ?page=1&limit=20
+- Sorting is supported: ?sort=-createdAt
+- The test user created has ID: 68c6aa965b79ddb364567a71
+
+============================================

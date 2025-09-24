@@ -1,0 +1,911 @@
+{
+  "endpoints": [
+    {
+      "category": "USER_MASTER",
+      "requests": [
+        {
+          "name": "Create User",
+          "method": "POST",
+          "url": "http://localhost:5000/api/users",
+          "body": {
+            "name": "Rajesh Kumar",
+            "phoneNo": "9876543210",
+            "email": "rajesh.kumar@police.in",
+            "roleId": "64abf20e45c8a9e123456789",
+            "unitId": "64abf20e45c8a9e987654321",
+            "badgeNo": "AP001234",
+            "isIpsOfficer": false,
+            "password": "Test@123"
+          }
+        },
+        {
+          "name": "Get All Users",
+          "method": "GET",
+          "url": "http://localhost:5000/api/users?page=1&limit=20&sort=-createdAt"
+        },
+        {
+          "name": "Get User by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/users/64ac1234ef567890abcdef12"
+        },
+        {
+          "name": "Update User",
+          "method": "PUT",
+          "url": "http://localhost:5000/api/users/64ac1234ef567890abcdef12",
+          "body": {
+            "email": "updated.email@police.in",
+            "phoneNo": "9876543211",
+            "name": "Rajesh Kumar Singh"
+          }
+        },
+        {
+          "name": "Delete User",
+          "method": "DELETE",
+          "url": "http://localhost:5000/api/users/64ac1234ef567890abcdef12"
+        },
+        {
+          "name": "Deactivate User",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/users/64ac1234ef567890abcdef12/deactivate"
+        },
+        {
+          "name": "Update Password",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/users/64ac1234ef567890abcdef12/password",
+          "body": {
+            "oldPassword": "Test@123",
+            "newPassword": "NewTest@456"
+          }
+        },
+        {
+          "name": "Get Users by Role",
+          "method": "GET",
+          "url": "http://localhost:5000/api/users/role/64abf20e45c8a9e123456789?page=1&limit=20"
+        },
+        {
+          "name": "Get Users by Unit",
+          "method": "GET",
+          "url": "http://localhost:5000/api/users/unit/64abf20e45c8a9e987654321?page=1&limit=20"
+        }
+      ]
+    },
+    {
+      "category": "VEHICLE_MASTER",
+      "requests": [
+        {
+          "name": "Add Vehicle",
+          "method": "POST",
+          "url": "http://localhost:5000/api/vehicles",
+          "body": {
+            "vehRegNo": "AP-09-ZZ-1234",
+            "makeType": "Mahindra",
+            "vehicleModel": "Bolero",
+            "year": 2022,
+            "fuelType": "DIESEL",
+            "tankCapacity": 60,
+            "seatingCapacity": 7,
+            "status": "AVAILABLE",
+            "unitId": "64abf20e45c8a9e123456789",
+            "totalKm": 15000
+          }
+        },
+        {
+          "name": "Get All Vehicles",
+          "method": "GET",
+          "url": "http://localhost:5000/api/vehicles?page=1&limit=20&status=AVAILABLE"
+        },
+        {
+          "name": "Get Vehicle by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/vehicles/64abf20e45c8a9e987654321"
+        },
+        {
+          "name": "Update Vehicle",
+          "method": "PUT",
+          "url": "http://localhost:5000/api/vehicles/64abf20e45c8a9e987654321",
+          "body": {
+            "status": "MAINTENANCE",
+            "totalKm": 45000,
+            "nextServiceDue": "2025-10-15T00:00:00Z"
+          }
+        },
+        {
+          "name": "Delete Vehicle",
+          "method": "DELETE",
+          "url": "http://localhost:5000/api/vehicles/64abf20e45c8a9e987654321"
+        },
+        {
+          "name": "Get Vehicle by Registration",
+          "method": "GET",
+          "url": "http://localhost:5000/api/vehicles/regno/AP-09-ZZ-1234"
+        },
+        {
+          "name": "Get Available Vehicles",
+          "method": "GET",
+          "url": "http://localhost:5000/api/vehicles/available?unitId=64abf20e45c8a9e123456789&page=1&limit=20"
+        },
+        {
+          "name": "Update Vehicle Status",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/vehicles/64abf20e45c8a9e987654321/status",
+          "body": {
+            "status": "IN_USE",
+            "currentDriverId": "64abf20e45c8a9e222222222"
+          }
+        },
+        {
+          "name": "Update Odometer",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/vehicles/64abf20e45c8a9e987654321/odometer",
+          "body": {
+            "totalKm": 46500
+          }
+        },
+        {
+          "name": "Get Vehicles by Unit",
+          "method": "GET",
+          "url": "http://localhost:5000/api/vehicles/unit/64abf20e45c8a9e123456789?page=1&limit=20"
+        },
+        {
+          "name": "Schedule Maintenance",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/vehicles/64abf20e45c8a9e987654321/maintenance",
+          "body": {
+            "nextServiceDue": "2025-10-15T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "category": "DRIVER_MASTER",
+      "requests": [
+        {
+          "name": "Add Driver",
+          "method": "POST",
+          "url": "http://localhost:5000/api/drivers",
+          "body": {
+            "name": "Suresh Kumar",
+            "phoneNo": "8765432109",
+            "licenseNo": "AP20200012345",
+            "licenseExpiry": "2026-12-31T00:00:00Z",
+            "unitId": "64abf20e45c8a9e123456789",
+            "experience": 5,
+            "status": "AVAILABLE",
+            "rating": 4.5
+          }
+        },
+        {
+          "name": "Get All Drivers",
+          "method": "GET",
+          "url": "http://localhost:5000/api/drivers?page=1&limit=20&status=AVAILABLE"
+        },
+        {
+          "name": "Get Driver by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222"
+        },
+        {
+          "name": "Update Driver",
+          "method": "PUT",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222",
+          "body": {
+            "phoneNo": "8765432110",
+            "experience": 6,
+            "licenseExpiry": "2027-12-31T00:00:00Z"
+          }
+        },
+        {
+          "name": "Delete Driver",
+          "method": "DELETE",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222"
+        },
+        {
+          "name": "Get Available Drivers",
+          "method": "GET",
+          "url": "http://localhost:5000/api/drivers/available?unitId=64abf20e45c8a9e123456789&page=1&limit=20"
+        },
+        {
+          "name": "Assign Driver to Vehicle",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222/assign",
+          "body": {
+            "vehicleId": "64abf20e45c8a9e987654321"
+          }
+        },
+        {
+          "name": "Release Driver from Vehicle",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222/release"
+        },
+        {
+          "name": "Update Driver Status",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222/status",
+          "body": {
+            "status": "ON_DUTY"
+          }
+        },
+        {
+          "name": "Get Expiring Licenses",
+          "method": "GET",
+          "url": "http://localhost:5000/api/drivers/expiring-licenses?days=30"
+        },
+        {
+          "name": "Update Driver Rating",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/drivers/64abf20e45c8a9e222222222/rating",
+          "body": {
+            "rating": 4.5
+          }
+        }
+      ]
+    },
+    {
+      "category": "FUEL_STATION",
+      "requests": [
+        {
+          "name": "Add Fuel Station",
+          "method": "POST",
+          "url": "http://localhost:5000/api/fuel-stations",
+          "body": {
+            "stationName": "Bharat Petroleum - Main Road",
+            "stationCode": "BP001",
+            "address": "Main Road, Near Police Station, Hyderabad",
+            "district": "Hyderabad",
+            "state": "Telangana",
+            "pincode": "500001",
+            "contactNo": "9876543210",
+            "ownerName": "Ramesh Enterprises",
+            "gstNo": "36AABCU9603R1ZM",
+            "contractStartDate": "2025-01-01T00:00:00Z",
+            "contractEndDate": "2025-12-31T00:00:00Z",
+            "fuelTypes": ["PETROL", "DIESEL"],
+            "monthlyQuota": {
+              "petrol": 10000,
+              "diesel": 15000
+            },
+            "currentStock": {
+              "petrol": 5000,
+              "diesel": 8000
+            },
+            "pricePerLiter": {
+              "petrol": 106.50,
+              "diesel": 94.25
+            }
+          }
+        },
+        {
+          "name": "Get All Fuel Stations",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-stations?page=1&limit=20&district=Hyderabad"
+        },
+        {
+          "name": "Get Fuel Station by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333"
+        },
+        {
+          "name": "Update Fuel Station",
+          "method": "PUT",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333",
+          "body": {
+            "contactNo": "9876543211",
+            "ownerName": "Updated Enterprises",
+            "address": "New Address, Hyderabad"
+          }
+        },
+        {
+          "name": "Delete Fuel Station",
+          "method": "DELETE",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333"
+        },
+        {
+          "name": "Get Station by Code",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-stations/code/BP001"
+        },
+        {
+          "name": "Get Active Stations",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-stations/active?district=Hyderabad&fuelType=DIESEL&page=1&limit=20"
+        },
+        {
+          "name": "Update Stock - Set",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333/stock",
+          "body": {
+            "petrolStock": 5000,
+            "dieselStock": 8000,
+            "operation": "set"
+          }
+        },
+        {
+          "name": "Update Stock - Add",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333/stock",
+          "body": {
+            "petrolStock": 2000,
+            "dieselStock": 3000,
+            "operation": "add"
+          }
+        },
+        {
+          "name": "Update Stock - Subtract",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333/stock",
+          "body": {
+            "petrolStock": 500,
+            "dieselStock": 800,
+            "operation": "subtract"
+          }
+        },
+        {
+          "name": "Update Prices",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333/prices",
+          "body": {
+            "petrolPrice": 107.00,
+            "dieselPrice": 95.00
+          }
+        },
+        {
+          "name": "Get Low Stock Stations",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-stations/low-stock?threshold=1000"
+        },
+        {
+          "name": "Get Expiring Contracts",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-stations/expiring-contracts?days=30"
+        },
+        {
+          "name": "Renew Contract",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-stations/64abf20e45c8a9e333333333/renew",
+          "body": {
+            "contractEndDate": "2026-12-31T00:00:00Z",
+            "monthlyQuota": {
+              "petrol": 12000,
+              "diesel": 18000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "FUEL_LOG",
+      "requests": [
+        {
+          "name": "Create Fuel Log",
+          "method": "POST",
+          "url": "http://localhost:5000/api/fuel-logs",
+          "body": {
+            "vehicleId": "64abf20e45c8a9e987654321",
+            "driverId": "64abf20e45c8a9e222222222",
+            "stationId": "64abf20e45c8a9e333333333",
+            "unitId": "64abf20e45c8a9e123456789",
+            "fuelType": "DIESEL",
+            "quantity": 40,
+            "pricePerLiter": 94.25,
+            "odometerReading": 47000,
+            "receiptNo": "BP001-2025-001234",
+            "fillDate": "2025-09-14T10:30:00Z"
+          }
+        },
+        {
+          "name": "Get All Fuel Logs",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-logs?page=1&limit=20&approvalStatus=PENDING"
+        },
+        {
+          "name": "Get Fuel Log by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-logs/64abf20e45c8a9e444444444"
+        },
+        {
+          "name": "Update Fuel Log",
+          "method": "PUT",
+          "url": "http://localhost:5000/api/fuel-logs/64abf20e45c8a9e444444444",
+          "body": {
+            "quantity": 45,
+            "pricePerLiter": 94.50,
+            "odometerReading": 47050
+          }
+        },
+        {
+          "name": "Delete Fuel Log",
+          "method": "DELETE",
+          "url": "http://localhost:5000/api/fuel-logs/64abf20e45c8a9e444444444"
+        },
+        {
+          "name": "Get Logs by Vehicle",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-logs/vehicle/64abf20e45c8a9e987654321?startDate=2025-01-01&endDate=2025-12-31&page=1&limit=20"
+        },
+        {
+          "name": "Get Logs by Driver",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-logs/driver/64abf20e45c8a9e222222222?startDate=2025-01-01&endDate=2025-12-31&page=1&limit=20"
+        },
+        {
+          "name": "Get Pending Approvals",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-logs/pending?unitId=64abf20e45c8a9e123456789&page=1&limit=20"
+        },
+        {
+          "name": "Approve Fuel Log",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-logs/64abf20e45c8a9e444444444/approve",
+          "body": {
+            "approvedBy": "64ac1234ef567890abcdef12",
+            "approvalRemarks": "Verified and approved"
+          }
+        },
+        {
+          "name": "Reject Fuel Log",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/fuel-logs/64abf20e45c8a9e444444444/reject",
+          "body": {
+            "approvedBy": "64ac1234ef567890abcdef12",
+            "approvalRemarks": "Receipt number mismatch with records"
+          }
+        },
+        {
+          "name": "Get Consumption Report",
+          "method": "GET",
+          "url": "http://localhost:5000/api/fuel-logs/report/consumption?unitId=64abf20e45c8a9e123456789&startDate=2025-01-01&endDate=2025-12-31"
+        }
+      ]
+    },
+    {
+      "category": "UNIT",
+      "requests": [
+        {
+          "name": "Create Unit",
+          "method": "POST",
+          "url": "http://localhost:5000/api/units",
+          "body": {
+            "unitName": "Hyderabad City Police Station",
+            "unitCode": "HYD-PS-001",
+            "unitType": "POLICE_STATION",
+            "address": "Main Road, Sector 5, Hyderabad",
+            "district": "Hyderabad",
+            "state": "Telangana",
+            "pincode": "500001",
+            "contactNo": "9876543210",
+            "headOfficerId": "64ac1234ef567890abcdef12",
+            "vehicleCount": 25,
+            "personnelCount": 150,
+            "monthlyFuelQuota": {
+              "petrol": 5000,
+              "diesel": 8000
+            }
+          }
+        },
+        {
+          "name": "Get All Units",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units?page=1&limit=20&unitType=POLICE_STATION"
+        },
+        {
+          "name": "Get Unit by ID",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555"
+        },
+        {
+          "name": "Update Unit",
+          "method": "PUT",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555",
+          "body": {
+            "contactNo": "9876543211",
+            "vehicleCount": 30,
+            "personnelCount": 175,
+            "address": "Updated Address, Hyderabad"
+          }
+        },
+        {
+          "name": "Delete Unit",
+          "method": "DELETE",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555"
+        },
+        {
+          "name": "Get Unit by Code",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/code/HYD-PS-001"
+        },
+        {
+          "name": "Get Units by Type",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/type/POLICE_STATION?page=1&limit=20"
+        },
+        {
+          "name": "Get Sub-Units",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555/sub-units?page=1&limit=20"
+        },
+        {
+          "name": "Get Unit Hierarchy",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555/hierarchy"
+        },
+        {
+          "name": "Update Unit Head",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555/head",
+          "body": {
+            "headOfficerId": "64ac1234ef567890abcdef12"
+          }
+        },
+        {
+          "name": "Update Fuel Quota",
+          "method": "PATCH",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555/fuel-quota",
+          "body": {
+            "petrolQuota": 6000,
+            "dieselQuota": 9000
+          }
+        },
+        {
+          "name": "Get Unit Statistics",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/64abf20e45c8a9e555555555/statistics"
+        },
+        {
+          "name": "Get Units by District",
+          "method": "GET",
+          "url": "http://localhost:5000/api/units/district/Hyderabad?page=1&limit=20"
+        }
+      ]
+    },
+    {
+      "category": "HEALTH_CHECK",
+      "requests": [
+        {
+          "name": "API Health Check",
+          "method": "GET",
+          "url": "http://localhost:5000/api/health"
+        }
+      ]
+    }
+  ],
+  "test_data": {
+    "multiple_users": [
+      {
+        "name": "Amit Sharma",
+        "phoneNo": "9123456789",
+        "email": "amit.sharma@police.in",
+        "roleId": "64abf20e45c8a9e123456789",
+        "unitId": "64abf20e45c8a9e987654321",
+        "badgeNo": "TS002345",
+        "isIpsOfficer": true,
+        "password": "Pass@123"
+      },
+      {
+        "name": "Priya Patel",
+        "phoneNo": "8234567890",
+        "email": "priya.patel@police.in",
+        "roleId": "64abf20e45c8a9e123456789",
+        "unitId": "64abf20e45c8a9e987654321",
+        "badgeNo": "TS003456",
+        "isIpsOfficer": false,
+        "password": "Pass@123"
+      },
+      {
+        "name": "Vikram Singh",
+        "phoneNo": "7345678901",
+        "email": "vikram.singh@police.in",
+        "roleId": "64abf20e45c8a9e123456789",
+        "unitId": "64abf20e45c8a9e555555555",
+        "badgeNo": "TS004567",
+        "isIpsOfficer": false,
+        "password": "Pass@123"
+      }
+    ],
+    "multiple_vehicles": [
+      {
+        "vehRegNo": "TS-10-AB-5678",
+        "makeType": "Toyota",
+        "vehicleModel": "Innova",
+        "year": 2023,
+        "fuelType": "DIESEL",
+        "tankCapacity": 55,
+        "seatingCapacity": 8,
+        "status": "AVAILABLE",
+        "unitId": "64abf20e45c8a9e123456789",
+        "totalKm": 8000
+      },
+      {
+        "vehRegNo": "TS-09-CD-9012",
+        "makeType": "Maruti",
+        "vehicleModel": "Swift Dzire",
+        "year": 2024,
+        "fuelType": "PETROL",
+        "tankCapacity": 37,
+        "seatingCapacity": 5,
+        "status": "AVAILABLE",
+        "unitId": "64abf20e45c8a9e987654321",
+        "totalKm": 3000
+      },
+      {
+        "vehRegNo": "AP-31-EF-3456",
+        "makeType": "Tata",
+        "vehicleModel": "Nexon EV",
+        "year": 2024,
+        "fuelType": "ELECTRIC",
+        "tankCapacity": 0,
+        "seatingCapacity": 5,
+        "status": "AVAILABLE",
+        "unitId": "64abf20e45c8a9e555555555",
+        "totalKm": 1500
+      }
+    ],
+    "multiple_drivers": [
+      {
+        "name": "Mohammed Ali",
+        "phoneNo": "9988776655",
+        "licenseNo": "TS20210054321",
+        "licenseExpiry": "2028-06-30T00:00:00Z",
+        "unitId": "64abf20e45c8a9e123456789",
+        "experience": 8,
+        "status": "AVAILABLE",
+        "rating": 4.7
+      },
+      {
+        "name": "Ravi Kumar",
+        "phoneNo": "8877665544",
+        "licenseNo": "AP20190098765",
+        "licenseExpiry": "2027-03-15T00:00:00Z",
+        "unitId": "64abf20e45c8a9e987654321",
+        "experience": 12,
+        "status": "AVAILABLE",
+        "rating": 4.9
+      },
+      {
+        "name": "Sanjay Reddy",
+        "phoneNo": "7766554433",
+        "licenseNo": "TS20220012345",
+        "licenseExpiry": "2029-09-20T00:00:00Z",
+        "unitId": "64abf20e45c8a9e555555555",
+        "experience": 3,
+        "status": "AVAILABLE",
+        "rating": 4.2
+      }
+    ],
+    "multiple_fuel_stations": [
+      {
+        "stationName": "Indian Oil - Highway Station",
+        "stationCode": "IO002",
+        "address": "NH44, Outer Ring Road, Hyderabad",
+        "district": "Hyderabad",
+        "state": "Telangana",
+        "pincode": "500032",
+        "contactNo": "9123456789",
+        "ownerName": "Krishna Enterprises",
+        "gstNo": "36BBBCU9603R1ZM",
+        "contractStartDate": "2025-02-01T00:00:00Z",
+        "contractEndDate": "2026-01-31T00:00:00Z",
+        "fuelTypes": ["PETROL", "DIESEL"],
+        "monthlyQuota": {
+          "petrol": 12000,
+          "diesel": 18000
+        },
+        "currentStock": {
+          "petrol": 6000,
+          "diesel": 9000
+        },
+        "pricePerLiter": {
+          "petrol": 106.75,
+          "diesel": 94.50
+        }
+      },
+      {
+        "stationName": "HP Petrol Pump - City Center",
+        "stationCode": "HP003",
+        "address": "MG Road, Secunderabad",
+        "district": "Hyderabad",
+        "state": "Telangana",
+        "pincode": "500003",
+        "contactNo": "8234567890",
+        "ownerName": "Lakshmi Fuels",
+        "gstNo": "36CCCCU9603R1ZM",
+        "contractStartDate": "2025-03-01T00:00:00Z",
+        "contractEndDate": "2026-02-28T00:00:00Z",
+        "fuelTypes": ["PETROL", "DIESEL", "CNG"],
+        "monthlyQuota": {
+          "petrol": 8000,
+          "diesel": 12000
+        },
+        "currentStock": {
+          "petrol": 4000,
+          "diesel": 6000
+        },
+        "pricePerLiter": {
+          "petrol": 106.25,
+          "diesel": 94.00
+        }
+      }
+    ],
+    "multiple_fuel_logs": [
+      {
+        "vehicleId": "64abf20e45c8a9e987654321",
+        "driverId": "64abf20e45c8a9e222222222",
+        "stationId": "64abf20e45c8a9e333333333",
+        "unitId": "64abf20e45c8a9e123456789",
+        "fuelType": "DIESEL",
+        "quantity": 35,
+        "pricePerLiter": 94.25,
+        "odometerReading": 48500,
+        "receiptNo": "BP001-2025-001235",
+        "fillDate": "2025-09-15T09:00:00Z"
+      },
+      {
+        "vehicleId": "64abf20e45c8a9e987654321",
+        "driverId": "64abf20e45c8a9e222222222",
+        "stationId": "64abf20e45c8a9e333333333",
+        "unitId": "64abf20e45c8a9e123456789",
+        "fuelType": "PETROL",
+        "quantity": 25,
+        "pricePerLiter": 106.50,
+        "odometerReading": 12500,
+        "receiptNo": "IO002-2025-000456",
+        "fillDate": "2025-09-16T14:30:00Z"
+      },
+      {
+        "vehicleId": "64abf20e45c8a9e987654321",
+        "driverId": "64abf20e45c8a9e222222222",
+        "stationId": "64abf20e45c8a9e333333333",
+        "unitId": "64abf20e45c8a9e555555555",
+        "fuelType": "DIESEL",
+        "quantity": 50,
+        "pricePerLiter": 94.00,
+        "odometerReading": 52000,
+        "receiptNo": "HP003-2025-000789",
+        "fillDate": "2025-09-17T11:15:00Z"
+      }
+    ],
+    "multiple_units": [
+      {
+        "unitName": "Cyberabad Police Headquarters",
+        "unitCode": "CYB-HQ-001",
+        "unitType": "HEADQUARTERS",
+        "address": "HITEC City, Cyberabad",
+        "district": "Hyderabad",
+        "state": "Telangana",
+        "pincode": "500081",
+        "contactNo": "9123456789",
+        "vehicleCount": 50,
+        "personnelCount": 500,
+        "monthlyFuelQuota": {
+          "petrol": 10000,
+          "diesel": 15000
+        }
+      },
+      {
+        "unitName": "Madhapur Police Station",
+        "unitCode": "MDH-PS-002",
+        "unitType": "POLICE_STATION",
+        "address": "Madhapur Main Road",
+        "district": "Hyderabad",
+        "state": "Telangana",
+        "pincode": "500081",
+        "contactNo": "8234567890",
+        "parentUnitId": "64abf20e45c8a9e555555555",
+        "vehicleCount": 15,
+        "personnelCount": 75,
+        "monthlyFuelQuota": {
+          "petrol": 3000,
+          "diesel": 4500
+        }
+      },
+      {
+        "unitName": "Traffic Police Special Unit",
+        "unitCode": "TRF-SU-003",
+        "unitType": "SPECIAL_UNIT",
+        "address": "Begumpet, Hyderabad",
+        "district": "Hyderabad",
+        "state": "Telangana",
+        "pincode": "500016",
+        "contactNo": "7345678901",
+        "vehicleCount": 30,
+        "personnelCount": 100,
+        "monthlyFuelQuota": {
+          "petrol": 6000,
+          "diesel": 8000
+        }
+      }
+    ]
+  },
+  "test_scenarios": {
+    "error_cases": [
+      {
+        "name": "Invalid Phone Number",
+        "method": "POST",
+        "url": "http://localhost:5000/api/users",
+        "body": {
+          "name": "Test User",
+          "phoneNo": "123",
+          "email": "test@example.com",
+          "roleId": "64abf20e45c8a9e123456789",
+          "unitId": "64abf20e45c8a9e987654321"
+        }
+      },
+      {
+        "name": "Invalid Email Format",
+        "method": "POST",
+        "url": "http://localhost:5000/api/users",
+        "body": {
+          "name": "Test User",
+          "phoneNo": "9876543210",
+          "email": "invalid-email",
+          "roleId": "64abf20e45c8a9e123456789",
+          "unitId": "64abf20e45c8a9e987654321"
+        }
+      },
+      {
+        "name": "Invalid Vehicle Registration",
+        "method": "POST",
+        "url": "http://localhost:5000/api/vehicles",
+        "body": {
+          "vehRegNo": "INVALID",
+          "makeType": "Test",
+          "vehicleModel": "Test",
+          "year": 2024,
+          "fuelType": "DIESEL",
+          "tankCapacity": 50,
+          "seatingCapacity": 5,
+          "unitId": "64abf20e45c8a9e123456789"
+        }
+      },
+      {
+        "name": "Expired License",
+        "method": "POST",
+        "url": "http://localhost:5000/api/drivers",
+        "body": {
+          "name": "Test Driver",
+          "phoneNo": "9876543210",
+          "licenseNo": "TEST123",
+          "licenseExpiry": "2020-01-01T00:00:00Z",
+          "unitId": "64abf20e45c8a9e123456789",
+          "experience": 5
+        }
+      },
+      {
+        "name": "Invalid GST Number",
+        "method": "POST",
+        "url": "http://localhost:5000/api/fuel-stations",
+        "body": {
+          "stationName": "Test Station",
+          "stationCode": "TEST001",
+          "address": "Test Address",
+          "district": "Test",
+          "state": "Test",
+          "pincode": "500001",
+          "contactNo": "9876543210",
+          "ownerName": "Test Owner",
+          "gstNo": "INVALID123",
+          "contractStartDate": "2025-01-01T00:00:00Z",
+          "contractEndDate": "2025-12-31T00:00:00Z",
+          "fuelTypes": ["PETROL"],
+          "pricePerLiter": {
+            "petrol": 100,
+            "diesel": 90
+          }
+        }
+      }
+    ]
+  },
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_JWT_TOKEN_HERE"
+  },
+  "test_object_ids": {
+    "userId": "64ac1234ef567890abcdef12",
+    "roleId": "64abf20e45c8a9e123456789",
+    "unitId": "64abf20e45c8a9e987654321",
+    "vehicleId": "64abf20e45c8a9e987654321",
+    "driverId": "64abf20e45c8a9e222222222",
+    "stationId": "64abf20e45c8a9e333333333",
+    "fuelLogId": "64abf20e45c8a9e444444444",
+    "unitId2": "64abf20e45c8a9e555555555"
+  }
+}
